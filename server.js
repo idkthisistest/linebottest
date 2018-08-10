@@ -44,7 +44,7 @@ function handleEvent(event) {
   
   
 const prefix = "~"
-if (!event.message.text.startswith(prefix))return;
+if (!event.message.text.startswith("~"))return;
 
   const rop = {type: 'text', text: (rp[Math.floor(Math.random() * rp.length)])}
   var args = event.message.text.substring(prefix.length).split("");
@@ -52,7 +52,7 @@ if (!event.message.text.startswith(prefix))return;
   switch(args[0].toLowerCase()){
 
     case "doin":
-    client.replyMessage(event.replyToken, rop);
+    return client.replyMessage(event.replyToken, rop);
 
 
   }
