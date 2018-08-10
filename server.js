@@ -30,12 +30,15 @@ app.post('/callback', line.middleware(config), (req, res) => {
 
 // event handler
 function handleEvent(event) {
-  if (event.type !== 'message' || event.message.type !== 'text') {
-    return Promise.resolve(null);
-  }
+  event.message.content().then(function (content){
+    
+    const noe = (content.toString('base64'))
+    return client.replyMessage(event.replyToken, noe)
+
+  })
 
   const dis = '~doin'
-  if (event.message.text.startswith(dis)){
+  if (client.getMessageContent('<messageId>').startswith()){
     var rp = [
       "Pak, itu bukan text...",
       "Bapak, itu bukan text plis tulis text aja",
