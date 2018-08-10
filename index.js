@@ -1,49 +1,52 @@
-'use strict';
-
-const line = require('@line/bot-sdk');
 const express = require('express');
+const fs = require('fs');
+const bp = require('body-parser');
+const request = require('request');
+const crypto = require('crypto');
 
-// create LINE SDK config from env variables
-const config = {
-  channelAccessToken: '0hb84/SzGQcdN6B7x51UurAH36bpi1xxRkCDZIwfjYVF8Fo1bPk2ksUPqpMfPpvx9F3U58gKdNGpu/6N4ZnnQCaM60+UmKzsUd4mo9BCJ3BgbPLpaO4Cm9Lm5OKuq/Em4kndES6+LgIV/MYQANotmQdB04t89/1O/w1cDnyilFU=',
-  channelSecret: 'b3f9c2cf695984a6a0d69cf7c932ae8c',
-};
-
-// create LINE SDK client
-const client = new line.Client(config);
-
-// create Express app
-// about Express itself: https://expressjs.com/
 const app = express();
 
-// register a webhook handler with middleware
-// about the middleware, please refer to doc
-app.post('/callback', line.middleware(config), (req, res) => {
-  Promise
-    .all(req.body.events.map(handleEvent))
-    .then((result) => res.json(result))
-    .catch((err) => {
-      console.error(err);
-      res.status(500).end();
-    });
+app.use(bp.json());
+
+const html = (res, path) => {
+  res.set('Content-Type', 'text/html');
+  res.send(fs.readFileSync(path));
+};
+
+app.get('/', (_, res) => html(res, './index.html'));
+
+const createSignature = (secret, body) => {
+  return crypto
+    .createHmac('sha256', secret)
+    .update(body)
+    .digest('base64');
+};
+
+app.post('/', (req, res) => {
+  const webhook = req.body.webhook;
+  const body = JSON.stringify(req.body.content);
+  request.post({
+    url: webhook.url,
+    headers: {
+      'X-Line-Signature': createSignature(webhook.secret, body),
+      'Content-Type': 'application/json'
+    },
+    body: body
+  }, (e, r, body) => res.json({
+    status: r.statusCode,
+    body: body,
+  }));
 });
 
-// event handler
-function handleEvent(event) {
-  if (event.type !== 'message' || event.message.type !== 'text') {
-    // ignore non-text-message event
-    return Promise.resolve(null);
-  }
-
-  // create a echoing text message
-  const echo = { type: 'text', text: event.message.text };
-
-  // use reply API
-  return client.replyMessage(event.replyToken, echo);
-}
-
-// listen on port
-const port = 70 || 3000;
-app.listen(port, () => {
-  console.log(`listening on ${port}`);
+app.post('/webhook', (req, res) => {
+  console.log('-- hook -------------------');
+  console.log('content type:', req.get('Content-Type'));
+  console.log('signature', req.get('X-Line-Signature'));
+  console.log('body:', req.body);
+  console.log('---------------------------');
+  res.end();
 });
+
+const port = parseInt(process.argv[2], 10) || 3030;
+
+app.listen(port, () => console.log(`http://localhost:${port}`));
