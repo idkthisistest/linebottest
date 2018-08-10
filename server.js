@@ -43,7 +43,8 @@ function handleEvent(event) {
 }
 
 // listen on port
+const hostname = '0.0.0.0'
 const port = process.env.PORT || port;
-app.listen(port, () => {
+app.listen(port, hostname, () => {
   console.log(`listening on ${port}`);
 });
