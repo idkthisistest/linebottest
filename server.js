@@ -30,25 +30,12 @@ app.post('/callback', line.middleware(config), (req, res) => {
 
 // event handler
 function handleEvent(event) {
-  event.message.content().then(function (content){
-    
-    const noe = {type: 'text', text: (content.toString('base64'))}
-    return client.replyMessage(event.replyToken, noe)
 
-  })
-
-  const dis = '~doin'
-  if (client.getMessageContent('<messageId>').startswith()){
-    var rp = [
-      "Pak, itu bukan text...",
-      "Bapak, itu bukan text plis tulis text aja",
-      "Thanks :D",
-      "Bro, i can't reply to that!"
-  ];
-  const rop = {type: 'text', text: (rp[Math.floor(Math.random() * rp.length)])}
-  return client.replyMessage(event.replyToken, rop)
-
+  if(event.type !== 'message' || event.message.type !== 'text'){
+    return;
   }
+  const echo = {type: 'text', text: event.message.text};
+  return client.replyMessage(event.replyToken, echo);
 
 }
 
