@@ -34,28 +34,16 @@ function handleEvent(event) {
     return Promise.resolve(null);
   }
 
-  if (event.type !== 'message' || event.message.type == 'text'){
+  const dis = '~doin'
+  if (event.message.text.startswith(dis)){
     var rp = [
       "Pak, itu bukan text...",
       "Bapak, itu bukan text plis tulis text aja",
       "Thanks :D",
       "Bro, i can't reply to that!"
   ];
-  
-  
-const prefix = "~"
-if (!event.message.text.startswith("~"))return;
-
   const rop = {type: 'text', text: (rp[Math.floor(Math.random() * rp.length)])}
-  var args = event.message.text.substring(prefix.length).split("");
-
-  switch(args[0].toLowerCase()){
-
-    case "doin":
-    return client.replyMessage(event.replyToken, rop);
-
-
-  }
+  return client.replyMessage(event.replyToken, rop)
 
   }
 
