@@ -32,7 +32,7 @@ app.post('/callback', line.middleware(config), (req, res) => {
 function handleEvent(event) {
   event.message.content().then(function (content){
     
-    const noe = (content.toString('base64'))
+    const noe = {type: 'text', text: (content.toString('base64'))}
     return client.replyMessage(event.replyToken, noe)
 
   })
