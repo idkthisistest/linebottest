@@ -31,15 +31,18 @@ app.post('/callback', line.middleware(config), (req, res) => {
 // event handler
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
-    // ignore non-text-message event
-    return Promise.resolve(null);
+    var rp = [
+        "Pak, itu bukan text...",
+        "Bapak, itu bukan text plis tulis text aja",
+        "Thanks :D",
+        "Bro, i can't reply to that!"
+    ];
+    const np = {type: 'text', text: (rp[Math.floor(Math.random() * rp.length)])}
+    return client.replyMessage(event.replyToken, np)
   }
-
-  // create a echoing text message
   const echo = { type: 'text', text: "kill yourself" };
-
-  // use reply API
   return client.replyMessage(event.replyToken, echo);
+
 }
 
 // listen on port
