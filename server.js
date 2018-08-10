@@ -40,10 +40,20 @@ function handleEvent(event) {
     const np = {type: 'text', text: (rp[Math.floor(Math.random() * rp.length)])}
     return client.replyMessage(event.replyToken, np)
   }
-  const echo = { type: 'text', text: "kill yourself" };
-  return client.replyMessage(event.replyToken, echo);
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 // listen on port
 const hostname = '0.0.0.0'
