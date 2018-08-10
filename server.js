@@ -31,14 +31,32 @@ app.post('/callback', line.middleware(config), (req, res) => {
 // event handler
 function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
+    break;
+  }
+
+  if (event.type !== 'message' || event.message.type == 'text'){
     var rp = [
-        "Pak, itu bukan text...",
-        "Bapak, itu bukan text plis tulis text aja",
-        "Thanks :D",
-        "Bro, i can't reply to that!"
-    ];
-    const np = {type: 'text', text: (rp[Math.floor(Math.random() * rp.length)])}
-    return client.replyMessage(event.replyToken, np)
+      "Pak, itu bukan text...",
+      "Bapak, itu bukan text plis tulis text aja",
+      "Thanks :D",
+      "Bro, i can't reply to that!"
+  ];
+  
+  
+const prefix = "~"
+if (!event.message.text.startswith(prefix))return;
+
+  const rop = {type: 'text', text: (rp[Math.floor(Math.random() * rp.length)])}
+  var args = event.message.text.substring(prefix.length).split("");
+
+  switch(args[0].toLowerCase()){
+
+    case "doin":
+    client.replyMessage(event.replyToken, rop);
+
+
+  }
+
   }
 
 }
