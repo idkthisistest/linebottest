@@ -35,12 +35,11 @@ function handleEvent(event) {
     return;
   }
   const echo = {type: 'text', text: event.message.text}
-  if(event.message.text == '~doin'){
-    var args = event.message.text.substring('~doin').split(" ");
+  const tst = event.message.text
+  if(tst == '~doin'){
     const berdel = {type: 'text', text: "hello!"}
-    if(args[1]){
     return client.replyMessage(event.replyToken, berdel)
-    }
+    
   }
   return client.replyMessage(event.replyToken, echo)
   
