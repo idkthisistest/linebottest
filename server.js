@@ -35,6 +35,7 @@ function handleEvent(event) {
     return;
   }
   const echo = {type: 'text', text: event.message.text};
+  if (!event.message.text.startswith('~')) return;
   return client.replyMessage(event.replyToken, echo)
 }
 
