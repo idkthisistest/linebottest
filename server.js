@@ -34,16 +34,8 @@ function handleEvent(event) {
   if(event.type !== 'message' || event.message.type !== 'text'){
     return;
   }
-  client.getMessageContent('<messageId>')
-  .then((stream) => {
-    stream.on('data', (chunk) => {
-      const message = {type: 'text', text: chunk}
-      return message;
-    });
-    stream.on('error', (err) => {
-      // error handling
-    });
-  });
+  const echo = {type: 'text', text: event.message.text}
+  return client.replyMessage(event.replyToken, echo)
   
 
 }
