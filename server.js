@@ -39,7 +39,7 @@ function handleEvent(event) {
   const tst = event.message.text
   const kw = [
     tst == '~doin',
-    tst == '~8ball'
+    tst == '~8ball is awesome'
   ];
   if(kw[0]){
     const berdel = {type: 'text', text: "Ok Then"}
@@ -47,7 +47,7 @@ function handleEvent(event) {
     }
   if(kw[1]){
     var kwca = kw[1].substring(0, 6).split(" ");
-    if(!kwca[2]){
+    if(kwca[1]){
     const berdel = {type: 'text', text: "Tolong taruh pertanyaan"}
     return client.replyMessage(event.replyToken, berdel)
     }
