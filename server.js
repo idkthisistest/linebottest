@@ -56,7 +56,7 @@ function handleEvent(event) {
     const berdel = {type: 'text', text: "Tulis apa yang kamu ingin tanya setelah command!"}
     return client.replyMessage(event.replyToken, berdel)
     }
-  if(kw[3]){
+  if(kw[3].substring(0, 7)){
     var args = tst[3].substring(0, 7);
     var psb = [
       "Pasti Dong!",
