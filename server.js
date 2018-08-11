@@ -34,7 +34,7 @@ function handleEvent(event) {
   if(event.type !== 'message' || event.message.type !== 'text'){
     return;
   }
-  const echo = {type: 'text', text: event.message.text};
+  const echo = {type: 'text', text: "Webhook event object which contains the sent message. The message property contains a message object which corresponds with the message type. You can reply to message events."};
   const ok = client.replyMessage(event.replyToken, echo);
   return ok;
   
