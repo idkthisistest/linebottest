@@ -41,7 +41,7 @@ function handleEvent(event) {
     tst == '~',
     tst == '~doin',
     tst == '~8ball',
-    tst == '~8ball'+' '+echo
+    tst == '~8balls'
   ];  
   if(kw[0]){
     const berdel = {type: 'text', text: "Tolong tulis commandnya, coba lihat ~list"}
@@ -56,6 +56,7 @@ function handleEvent(event) {
     return client.replyMessage(event.replyToken, berdel)
     }
   if(kw[3]){
+    var cek = kw[3].split('s')
     var psb = [
       "Pasti Dong!",
       "Kurang tau kalau itu...",
@@ -65,8 +66,10 @@ function handleEvent(event) {
       "Nggak!!!",
       "Apaan sih?"
     ]
+    if(cek[0]){
     const berdel = {type: 'text', text: (psb[Math.floor(Math.random() * psb.length)])}
     return client.replyMessage(event.replyToken, berdel)
+    }
   }
 
   return client.replyMessage(event.replyToken, echo)
