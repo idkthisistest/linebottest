@@ -47,7 +47,7 @@ function handleEvent(event) {
     }
   if(kw[1]){
     var kwca = kw[1].split(" ");
-    switch (args[0].toLowerCase()){
+    switch (kwca[0].toLowerCase()){
       case "8ball":
       if(kwca[1]){
       const berdel = {type: 'text', text: "Tolong taruh pertanyaan"}
