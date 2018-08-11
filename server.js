@@ -40,8 +40,8 @@ function handleEvent(event) {
     const cek = tst == '~doin'
     var args = tst.substring(cek).split(" ");
     
-    if(args[1]){
-    const berdel = {type: 'text', text: "hello!"}
+    if(args[0]){
+    const berdel = {type: 'text', text: "gk ada pertanyan"}
     return client.replyMessage(event.replyToken, berdel)
     }
   }
