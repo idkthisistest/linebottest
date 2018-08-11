@@ -38,11 +38,12 @@ function handleEvent(event) {
   const echo = {type: 'text', text: event.message.text}
   const tst = event.message.text
   if(tst == '~doin'){
-    const cek = tst == '~doin'
     var args = tst.substring('~doin').split(" ");
     
-    if(args[0]){
+    if(tst == '~doin' + args){
     const berdel = {type: 'text', text: "gk ada pertanyan"}
+    return client.replyMessage(event.replyToken, berdel)
+    }
     if(args[1]){
       var psb = [
         "Pasti Dong!",
@@ -55,8 +56,6 @@ function handleEvent(event) {
       ];
       const echoing = {type: 'text', text: (psb[Math.floor(Math.random() * psb.length)])}
       return client.replyMessage(event.replyToken, echoing)
-    }
-    return client.replyMessage(event.replyToken, berdel)
     }
 
   }
