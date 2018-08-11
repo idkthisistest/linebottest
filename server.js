@@ -46,8 +46,11 @@ function handleEvent(event) {
     return client.replyMessage(event.replyToken, berdel)
     }
   if(kw[1]){
+    var kwca = kw[1].substring(kw[1].length).split(" ");
+    if(!kwca[1]){
     const berdel = {type: 'text', text: "Tolong taruh pertanyaan"}
     return client.replyMessage(event.replyToken, berdel)
+    }
   }
 
   return client.replyMessage(event.replyToken, echo)
