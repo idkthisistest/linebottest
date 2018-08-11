@@ -38,17 +38,22 @@ function handleEvent(event) {
   const echo = {type: 'text', text: event.message.text}
   const tst = event.message.text
   const kw = [
+    tst == '~',
     tst == '~doin',
-    tst == '~'
+    tst == '~8ball'
   ];
   if(kw[0]){
-    const berdel = {type: 'text', text: "Ok Then"}
+    const berdel = {type: 'text', text: "Tolong tulis commandnya, coba lihat ~list"}
     return client.replyMessage(event.replyToken, berdel)
     }
   if(kw[1]){
+    const berdel = {type: 'text', text: "Ok Then"}
+    return client.replyMessage(event.replyToken, berdel)
+    }
+  if(kw[2]){
     const berdel = {type: 'text', text: "Tulis apa yang kamu ingin tanya setelah command!"}
     return client.replyMessage(event.replyToken, berdel)
-  }
+    }
 
   return client.replyMessage(event.replyToken, echo)
   
