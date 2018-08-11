@@ -46,14 +46,8 @@ function handleEvent(event) {
     return client.replyMessage(event.replyToken, berdel)
     }
   if(kw[1]){
-    var kwca = kw[1].split(" ");
-    switch (kwca[0].toLowerCase()){
-      case "8ball":
-      if(kwca[1]){
-      const berdel = {type: 'text', text: "Tolong taruh pertanyaan"}
-      return client.replyMessage(event.replyToken, berdel)
-      }
-    }
+    const berdel = {type: 'text', text: "Tulis apa yang kamu ingin tanya setelah command!"}
+    return client.replyMessage(event.replyToken, berdel)
   }
 
   return client.replyMessage(event.replyToken, echo)
