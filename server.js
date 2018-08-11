@@ -71,8 +71,6 @@ function handleEvent(event) {
     
   }
 
-  return client.replyMessage(event.replyToken, echo)
-  
 
   }
 
