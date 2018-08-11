@@ -43,9 +43,6 @@ function handleEvent(event) {
     
     if(args[0]){
     const berdel = {type: 'text', text: "gk ada pertanyan"}
-    return client.replyMessage(event.replyToken, berdel)
-    }
-
     if(args[1]){
       var psb = [
         "Pasti Dong!",
@@ -59,6 +56,9 @@ function handleEvent(event) {
       const echoing = {type: 'text', text: (psb[Math.floor(Math.random() * psb.length)])}
       return client.replyMessage(event.replyToken, echoing)
     }
+    return client.replyMessage(event.replyToken, berdel)
+    }
+
   }
 
 
