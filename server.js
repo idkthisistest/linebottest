@@ -39,7 +39,7 @@ function handleEvent(event) {
   const tst = event.message.text
   if(tst == '~doin'){
     const cek = tst == '~doin'
-    var args = tst.substring(cek).split(" ");
+    var args = tst.substring(cek.length).split(" ");
     
     if(args[0]){
     const berdel = {type: 'text', text: "gk ada pertanyan"}
