@@ -66,7 +66,7 @@ function handleEvent(event) {
       "Nggak!!!",
       "Apaan sih?"
     ]
-    if(cek[1]){
+    if(cek[0]){
     const berdel = {type: 'text', text: (psb[Math.floor(Math.random() * psb.length)])}
     return client.replyMessage(event.replyToken, berdel)
     }
