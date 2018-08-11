@@ -35,6 +35,10 @@ function handleEvent(event) {
     return;
   }
   const echo = {type: 'text', text: event.message.text}
+  if(echo == '~pablos'){
+    const berdel = 'hello!'
+    return client.replyMessage(event.replyToken, berdel)
+  }
   return client.replyMessage(event.replyToken, echo)
   
 
