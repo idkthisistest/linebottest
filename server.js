@@ -42,10 +42,13 @@ function handleEvent(event) {
     tst == '~8ball'
   ]
   if(kw[0]){
-    
     const berdel = {type: 'text', text: "Ok Then"}
     return client.replyMessage(event.replyToken, berdel)
     }
+  if(kw[1]){
+    const berdel = {type: 'text', text: "Tolong taruh pertanyaan"}
+    return client.replyMessage(event.replyToken, berdel)
+  }
 
   return client.replyMessage(event.replyToken, echo)
   
