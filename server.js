@@ -41,7 +41,7 @@ function handleEvent(event) {
     tst == '~',
     tst == '~doin',
     tst == '~8ball',
-    tst == '~8ball '
+    tst == '~8balls'
   ];  
   if(kw[0]){
     const berdel = {type: 'text', text: "Tolong tulis commandnya, coba lihat ~list"}
