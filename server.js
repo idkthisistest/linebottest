@@ -37,7 +37,8 @@ function handleEvent(event) {
   
   const echo = {type: 'text', text: event.message.text}
   const tst = event.message.text
-  if(tst == '~doin'){
+  const kw = tst == 'doin'
+  if(kw){
     const berdel = {type: 'text', text: "Ok Then"}
     return client.replyMessage(event.replyToken, berdel)
     }
