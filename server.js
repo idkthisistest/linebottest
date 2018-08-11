@@ -36,7 +36,7 @@ function handleEvent(event) {
   }
   const echo = {type: 'text', text: event.message.text}
   if(event.message.text == '~doin'){
-    var args = event.message.text.substring('~doin').split("");
+    var args = event.message.text.substring('~doin').split(" ");
     const berdel = {type: 'text', text: "hello!"}
     if(args[1]){
     return client.replyMessage(event.replyToken, berdel)
