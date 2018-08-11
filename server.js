@@ -35,14 +35,10 @@ function handleEvent(event) {
     return;
   }
   const echo = {type: 'text', text: event.message.text};
-  const prefix = "~"
-  if(!echo.startswith(prefix)){
-    Promise.resolve(null);
-  }else{
+  const ok = client.replyMessage(event.replyToken, echo);
+  return ok;
   
-  return client.replyMessage(event.replyToken, echo);
- 
-}
+
 }
 
 
