@@ -34,6 +34,7 @@ function handleEvent(event) {
   if(event.type !== 'message' || event.message.type !== 'text'){
     return;
   }
+  
   const echo = {type: 'text', text: event.message.text}
   const tst = event.message.text
   if(tst == '~doin'){
@@ -45,7 +46,17 @@ function handleEvent(event) {
     return client.replyMessage(event.replyToken, berdel)
     }
   }
-  return client.replyMessage(event.replyToken, echo)
+  var psb = [
+    "Pasti Dong!",
+    "Kurang tau kalau itu...",
+    "Mungkin?",
+    "Bener Banget!",
+    "Gk juga sih",
+    "Nggak!!!",
+    "Apaan sih?"
+  ];
+  const echoing = {type: 'text', text: (psb[Math.floor(Math.random() * psb.length)])}
+  return client.replyMessage(event.replyToken, echoing)
   
 
 }
