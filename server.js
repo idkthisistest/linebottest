@@ -35,8 +35,8 @@ function handleEvent(event) {
     return;
   }
   const echo = {type: 'text', text: event.message.text};
-  const suka = {type: 'text', text: echo + " suka"};
-  const kamu = {type: 'text', text: suka + " kamu"};
+  const suka = {type: 'text', text: " suka"};
+  const kamu = {type: 'text', text: " kamu"};
   return client.replyMessage(event.replyToken, echo)
   .then(client.replyMessage(event.replyToken, suka)
   .then(client.replyMessage(event.replyToken, kamu)))
