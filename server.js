@@ -44,7 +44,9 @@ function handleEvent(event) {
     if(args[0]){
     const berdel = {type: 'text', text: "gk ada pertanyan"}
     return client.replyMessage(event.replyToken, berdel)
-    }else{
+    }
+
+    if(args[1]){
       var psb = [
         "Pasti Dong!",
         "Kurang tau kalau itu...",
@@ -58,6 +60,7 @@ function handleEvent(event) {
       return client.replyMessage(event.replyToken, echoing)
     }
   }
+
 
   
 
