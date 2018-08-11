@@ -39,8 +39,8 @@ function handleEvent(event) {
   const tst = event.message.text
   const kw = [
     tst == '~doin',
-    tst == '~8ball '
-  ]
+    tst == '~8ball'
+  ];
   if(kw[0]){
     const berdel = {type: 'text', text: "Ok Then"}
     return client.replyMessage(event.replyToken, berdel)
