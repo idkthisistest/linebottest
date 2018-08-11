@@ -34,9 +34,16 @@ function handleEvent(event) {
   if(event.type !== 'message' || event.message.type !== 'text'){
     return;
   }
-  const echo = {type: 'text', text: "Webhook event object which contains the sent message. The message property contains a message object which corresponds with the message type. You can reply to message events."};
-  const ok = client.replyMessage(event.replyToken, echo);
-  return ok;
+  client.getMessageContent('<messageId>')
+  .then((stream) => {
+    stream.on('data', (chunk) => {
+      const message = {type: 'text', text: chunk}
+      return message;
+    });
+    stream.on('error', (err) => {
+      // error handling
+    });
+  });
   
 
 }
