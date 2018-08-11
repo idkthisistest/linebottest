@@ -44,19 +44,21 @@ function handleEvent(event) {
     if(args[0]){
     const berdel = {type: 'text', text: "gk ada pertanyan"}
     return client.replyMessage(event.replyToken, berdel)
+    }else{
+      var psb = [
+        "Pasti Dong!",
+        "Kurang tau kalau itu...",
+        "Mungkin?",
+        "Bener Banget!",
+        "Gk juga sih",
+        "Nggak!!!",
+        "Apaan sih?"
+      ];
+      const echoing = {type: 'text', text: (psb[Math.floor(Math.random() * psb.length)])}
+      return client.replyMessage(event.replyToken, echoing)
     }
   }
-  var psb = [
-    "Pasti Dong!",
-    "Kurang tau kalau itu...",
-    "Mungkin?",
-    "Bener Banget!",
-    "Gk juga sih",
-    "Nggak!!!",
-    "Apaan sih?"
-  ];
-  const echoing = {type: 'text', text: (psb[Math.floor(Math.random() * psb.length)])}
-  return client.replyMessage(event.replyToken, echoing)
+
   
 
 }
