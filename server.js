@@ -41,8 +41,8 @@ function handleEvent(event) {
     tst == '~',
     tst == '~doin',
     tst == '~8ball',
-    tst == '~8ball' + event.message.text
-  ];
+    tst == '~8ball '
+  ];  
   if(kw[0]){
     const berdel = {type: 'text', text: "Tolong tulis commandnya, coba lihat ~list"}
     return client.replyMessage(event.replyToken, berdel)
