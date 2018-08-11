@@ -40,11 +40,10 @@ function handleEvent(event) {
   if(tst == '~doin'){
     var args = tst.substring('~doin').split(" ");
     
-    if(tst == '~doin' + " "){
+    if(args[0]){
     const berdel = {type: 'text', text: "gk ada pertanyan"}
     return client.replyMessage(event.replyToken, berdel)
     }
-    if(args[1]){
       var psb = [
         "Pasti Dong!",
         "Kurang tau kalau itu...",
@@ -61,9 +60,6 @@ function handleEvent(event) {
   }
 
 
-  
-
-}
 
 
 
