@@ -40,7 +40,7 @@ function handleEvent(event) {
   if(tst == '~doin'){
     var args = tst.substring('~doin').split(" ");
     
-    if(tst == '~doin' + args){
+    if(tst == '~doin' + " "){
     const berdel = {type: 'text', text: "gk ada pertanyan"}
     return client.replyMessage(event.replyToken, berdel)
     }
