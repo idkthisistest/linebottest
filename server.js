@@ -38,26 +38,12 @@ function handleEvent(event) {
   const echo = {type: 'text', text: event.message.text}
   const tst = event.message.text
   if(tst == '~doin'){
-    var args = tst.substring('~doin').split(" ");
-    
-    if(args[0]){
-    const berdel = {type: 'text', text: "gk ada pertanyan"}
+    const berdel = {type: 'text', text: "Ok Then"}
     return client.replyMessage(event.replyToken, berdel)
-    }
-      var psb = [
-        "Pasti Dong!",
-        "Kurang tau kalau itu...",
-        "Mungkin?",
-        "Bener Banget!",
-        "Gk juga sih",
-        "Nggak!!!",
-        "Apaan sih?"
-      ];
-      const echoing = {type: 'text', text: (psb[Math.floor(Math.random() * psb.length)])}
-      return client.replyMessage(event.replyToken, echoing)
     }
 
   }
+
 
 
 
