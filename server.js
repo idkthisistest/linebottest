@@ -41,7 +41,6 @@ function handleEvent(event) {
     tst == '~',
     tst == '~doin',
     tst == '~8ball',
-    tst == '~8balls'
   ];  
   
   if(kw[0]){
@@ -56,7 +55,7 @@ function handleEvent(event) {
     const berdel = {type: 'text', text: "Tulis apa yang kamu ingin tanya setelah command!"}
     return client.replyMessage(event.replyToken, berdel)
     }
-  if(kw[3]){
+  if(kw[2].substring(0, 6)){
     var psb = [
       "Pasti Dong!",
       "Kurang tau kalau itu...",
